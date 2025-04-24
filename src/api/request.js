@@ -3,12 +3,10 @@ import axios from 'axios'
 const baseURL =
   import.meta.env.VITE_APP_ENV == 'dev' ? '/proxyApi' : import.meta.env.VITE_APP_API_BASE
 
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-
 const Axios = axios.create({
   baseURL,
   timeout: 10000,
-  withCredentials: false,
+  withCredentials: true,
   headers: { 'X-Requested-With': 'XMLHttpRequest' },
 })
 
@@ -36,10 +34,7 @@ const getCrsfToken = async () => {
 
 // 响应拦截器
 Axios.interceptors.response.use(
-  (response) => {
-    console.log(response, '11111')
-    return response
-  },
+  (response) => response,
   (error) => {
     const { status } = error.response
     switch (status) {
