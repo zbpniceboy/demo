@@ -37,6 +37,9 @@ Axios.interceptors.response.use(
       case 403:
         console.log('权限不足')
         break
+      case 405:
+        console.log('请求方法不支持')
+        break
       case 500:
         console.log('服务器错误')
         break

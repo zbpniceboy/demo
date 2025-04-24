@@ -17,7 +17,7 @@ export const useBaseStore = defineStore('base', {
       this.hasAuth = false
     },
     async login(data) {
-      const res = await request.post('/login', data)
+      const res = await request.get('/login', data)
       if (res.data) {
         this.hasAuth = true
       } else {
