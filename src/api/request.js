@@ -51,7 +51,7 @@ Axios.interceptors.response.use(
           break
         case 419:
           console.log('请求超时')
-          getCrsfToken().then(() => http(error.config))
+          getCrsfToken().then(() => axios(error.config))
           break
         case 500:
           console.log('服务器错误')
