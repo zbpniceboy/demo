@@ -36,7 +36,10 @@ const getCrsfToken = async () => {
 
 // 响应拦截器
 Axios.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log(response, '11111')
+    return response
+  },
   (error) => {
     const { status } = error.response
     switch (status) {
