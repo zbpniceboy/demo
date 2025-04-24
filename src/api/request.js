@@ -16,7 +16,9 @@ let csrfToken = null
 // 获取csrf cookie , 接口未返回内容，只有cookie
 const getCrsfToken = async () => {
   try {
-    await Axios.get(`/csrf-cookie`)
+    await Axios.get(`/csrf-cookie`, {
+      withCredentials: true,
+    })
     console.log(
       document.cookie
         .split(';')
