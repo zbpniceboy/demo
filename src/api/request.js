@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const baseURL = '/proxyApi'
+// const baseURL = '/proxyApi'
+const baseURL = import.meta.env.VITE_APP_API_BASE
 
 const Axios = axios.create({
   baseURL,
