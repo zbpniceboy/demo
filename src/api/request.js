@@ -37,20 +37,24 @@ Axios.interceptors.response.use(
   (response) => response,
   (error) => {
     console.log(error, 'error')
-    const { status } = error.response
-    switch (status) {
-      case 401:
-        console.log('未登录')
-        break
-      case 403:
-        console.log('权限不足')
-        break
-      case 405:
-        console.log('请求方法不支持')
-        break
-      case 500:
-        console.log('服务器错误')
-        break
+    try {
+      const { status } = error.response
+      switch (status) {
+        case 401:
+          console.log('未登录')
+          break
+        case 403:
+          console.log('权限不足')
+          break
+        case 405:
+          console.log('请求方法不支持')
+          break
+        case 500:
+          console.log('服务器错误')
+          break
+      }
+    } catch (error) {
+      console.log(error)
     }
 
     return Promise.reject(error)
@@ -63,7 +67,7 @@ Axios.interceptors.request.use(
     // post、put、delete请求时，在请求头中携带token
     if (['post', 'put', 'delete'].includes(config.method.toLowerCase())) {
       if (!csrfToken) csrfToken = await getCrsfToken()
-      config.headers['X-XSRF-TOKEN'] = csrfToken.token
+      config.headers['X-XSRF-TOKEN'] = csrfToken
     }
     return config
   },
