@@ -55,7 +55,7 @@ Axios.interceptors.request.use(
     // post、put、delete请求时，在请求头中携带token
     if (['post', 'put', 'delete'].includes(config.method.toLowerCase())) {
       if (!csrfToken) csrfToken = await getCrsfToken()
-      config.headers['x-xsrf-token'] = csrfToken
+      config.headers['X-XSRF-TOKEN'] = csrfToken
     }
     return config
   },
