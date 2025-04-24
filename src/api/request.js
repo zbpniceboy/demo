@@ -2,11 +2,11 @@ import axios from 'axios'
 
 const baseURL =
   import.meta.env.VITE_APP_ENV == 'dev' ? '/proxyApi' : import.meta.env.VITE_APP_API_BASE
-
+axios.defaults.withCredentials = true
 const Axios = axios.create({
   baseURL,
   timeout: 10000,
-  withCredentials: true,
+  // withCredentials: true,
   headers: { 'X-Requested-With': 'XMLHttpRequest' },
 })
 
