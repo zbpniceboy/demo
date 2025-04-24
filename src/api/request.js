@@ -36,6 +36,7 @@ const getCrsfToken = async () => {
 Axios.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.log(error, 'error')
     const { status } = error.response
     switch (status) {
       case 401:
