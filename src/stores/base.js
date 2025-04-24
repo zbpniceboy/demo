@@ -12,7 +12,7 @@ export const useBaseStore = defineStore('base', {
       this.user = res.data.user
     },
     async loginOut() {
-      await request.post('/logout')
+      await request.get('/logout')
       this.user = null
       this.hasAuth = false
     },
