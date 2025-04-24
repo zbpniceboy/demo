@@ -16,6 +16,12 @@ let csrfToken = null
 const getCrsfToken = async () => {
   try {
     await Axios.get(`/csrf-cookie`)
+    console.log(
+      document.cookie
+        .split(';')
+        .find((cookie) => cookie.trim().startsWith('XSRF-TOKEN='))
+        ?.split('=')[1],
+    )
     return document.cookie
       .split(';')
       .find((cookie) => cookie.trim().startsWith('XSRF-TOKEN='))
@@ -55,7 +61,7 @@ Axios.interceptors.request.use(
     // post、put、delete请求时，在请求头中携带token
     if (['post', 'put', 'delete'].includes(config.method.toLowerCase())) {
       if (!csrfToken) csrfToken = await getCrsfToken()
-      config.headers['X-XSRF-TOKEN'] = csrfToken
+      config.headers['X-XSRF-TOKEN'] = csrfToken.token
     }
     return config
   },
