@@ -1,7 +1,12 @@
 import axios from 'axios'
 
 // const baseURL = '/proxyApi'
-const baseURL = import.meta.env.VITE_APP_API_BASE
+const baseURL =
+  import.meta.env.VITE_APP_ENV == 'dev' ? '/proxyApi' : import.meta.env.VITE_APP_API_BASE
+
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 const Axios = axios.create({
   baseURL,
