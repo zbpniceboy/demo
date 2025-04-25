@@ -10,6 +10,7 @@ export default ({ mode }) => {
   const env = loadEnv(mode, root)
 
   console.log(env)
+
   return {
     plugins: [vue(), vueDevTools()],
     resolve: {
