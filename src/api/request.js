@@ -5,9 +5,10 @@ const Axios = axios.create({
   baseURL,
   timeout: 10000,
   withCredentials: true,
-  headers: {
-    'X-Requested-With': 'XMLHttpRequest',
-  },
+  crossDomain: true,
+  // headers: {
+  //   'X-Requested-With': 'XMLHttpRequest',
+  // },
 })
 
 // 存储csrf token
