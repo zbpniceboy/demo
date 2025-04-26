@@ -5,6 +5,7 @@ export const useBaseStore = defineStore('base', {
   state: () => ({
     user: null,
     hasAuth: false,
+    loginInfo: null,
   }),
   actions: {
     async getUser() {
@@ -19,6 +20,7 @@ export const useBaseStore = defineStore('base', {
     async login(data) {
       const res = await request.post('/login', data)
       if (res.data) {
+        this.loginInfo = res.data.data
         this.hasAuth = true
       } else {
         this.hasAuth = false
