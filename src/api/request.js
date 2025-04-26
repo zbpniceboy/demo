@@ -6,9 +6,10 @@ const Axios = axios.create({
   timeout: 10000,
   withCredentials: true,
   crossDomain: true,
-  // headers: {
-  //   'X-Requested-With': 'XMLHttpRequest',
-  // },
+  headers: {
+    // 'X-Requested-With': 'XMLHttpRequest',
+    'Access-Control-Allow-Origin': import.meta.env.VITE_APP_API_BASE,
+  },
 })
 
 // 存储csrf token
