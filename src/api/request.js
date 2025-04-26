@@ -8,7 +8,7 @@ const Axios = axios.create({
   crossDomain: true,
   headers: {
     // 'X-Requested-With': 'XMLHttpRequest',
-    'Access-Control-Allow-Origin': import.meta.env.VITE_APP_API_BASE,
+    Origin: import.meta.env.VITE_APP_API_BASE,
   },
 })
 
